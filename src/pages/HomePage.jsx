@@ -1,11 +1,10 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
+import Banner from '../components/Banner'
 
 const HomePage = () => {
   return (
     <div>
-        <NavBar/>
-        HomePage
+        <Banner/>
     </div>
   )
 }
