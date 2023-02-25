@@ -6,7 +6,6 @@ import SectionHeading from '../components/SectionHeading';
 //styles start her ....
 
 const Container = styled.div`
-height: 100vh;
 background-color: yellow;
 position: relative;
 `
@@ -80,7 +79,46 @@ box-shadow: -6px 8px 17px 1px rgba(106, 105, 105, 0.11);
 border-radius: 24px;
 `
 const DisplayArea = styled.div`
+    margin-top: 50px;
+`
+const Table = styled.table`
+    width: 100%;
+`
+const TableRow = styled.tr`
+    display: grid;
+    grid-template-columns: 1fr 4fr 2fr  2fr  3fr ;
+    background: #DCDCDC;
+    border-radius: 15px;
+    height: 50px;
+    align-items: center;
     
+`
+const TableHead = styled.th`
+    font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+
+
+color: #6B6B6B;
+`
+const TableDatas = styled.div`
+    
+`
+const TableData = styled.td`
+    
+`
+const NextButton = styled.button `
+margin-top: 40px;
+margin-bottom: 70px;
+  width: 50%;
+  height: 63px;
+  background: #009FF9;
+border-radius: 15px;
+border: none;
+font-size: 19px;
+color: white;
+cursor: pointer;
+
 `
 
 
@@ -144,9 +182,42 @@ const RegistrationProcess1 = () => {
                 </ButtonSection>
 
                 <DisplayArea>
+                    <Table>
+                        <TableRow>
+                            <TableHead>No</TableHead>
+                            <TableHead>Name</TableHead>
+                            <TableHead>Covaxin</TableHead>
+                            <TableHead>Covishield</TableHead>
+                            <TableHead>Action</TableHead>
+                        </TableRow>
+                        <TableDatas>
+                            <TableRow>
+                                <TableData>1</TableData>
+                                <TableData>vadakara</TableData>
+                                <TableData>13</TableData>
+                                <TableData>16</TableData>
+                                <TableData>selected</TableData>
+                            </TableRow>
+                            <TableRow>
+                                <TableData>1</TableData>
+                                <TableData>vadakara</TableData>
+                                <TableData>13</TableData>
+                                <TableData>16</TableData>
+                                <TableData>selected</TableData>
+                            </TableRow>
+
+
+                        </TableDatas>
+
+                        <NextButton>
+                            Next
+                        </NextButton>
+
+                    </Table>
 
                 </DisplayArea>
 
+                
 
             </InfoArea>
 
