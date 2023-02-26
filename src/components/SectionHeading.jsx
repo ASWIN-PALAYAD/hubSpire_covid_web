@@ -19,11 +19,11 @@ const Heading = styled.h1`
 
 //styles end here .....
 
-const SectionHeading = () => {
+const SectionHeading = ({title}) => {
   return (
     <Container>
         <Heading>
-            Registration
+            {title}
         </Heading>
         
     </Container>

@@ -1,13 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components';
 import ProcessStatusBar from '../components/ProcessStatusBar';
 import SectionHeading from '../components/SectionHeading';
+import { useGlobalContext } from '../context/GlobalContext';
 
 
 //styles starts here ....
+
 const Container = styled.div`
   position: relative;
-  background-color: red;
+  /* background-color: red; */
+  background: #E5E5E5;
   padding-bottom: 50px;
   justify-content: center;
 `
@@ -104,11 +107,30 @@ cursor: pointer;
 
 
 const Register = () => {
+    
+    const [myId, setMyId] = useState('')
+
+    const {setIdNumber,setidVerified} =  useGlobalContext();
+
+    const handleChange = (e)  => {
+      setMyId(e.target.value)
+    }
+    const handleIdVerifiction = (e) => {
+      if(!myId){
+        alert('please enter the id number')
+      }else{
+        setIdNumber(myId)
+        setidVerified(true)
+      }
+    }
+
+
+
   return (
     <Container>
 
       <Heading>
-        <SectionHeading/>
+        <SectionHeading title={"Register"} />
       </Heading>
 
       <StatusBar>
@@ -130,8 +152,8 @@ const Register = () => {
 
         <FormArea>
           <Label>Enter your Adhar no</Label> 
-          <Input type='text' placeholder='Enter the identity card number' />
-          <NextButton>Next</NextButton>
+          <Input onChange={handleChange} type='text' placeholder='Enter the identity card number' />
+          <NextButton onClick={()=> handleIdVerifiction()} >Next</NextButton>
         </FormArea>
 
 
