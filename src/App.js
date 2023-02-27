@@ -15,8 +15,9 @@ function App() {
     <HomePage/>
     <Register/>
     {idVerified && (<RegistrationProcess1/>) }
+    {/* <RegistrationProcess1/> */}
     {hospitalSelected && ( <RegistrationProcess2/> )}
-    
+    {/* <RegistrationProcess2/> */}
     </>
   );
 }

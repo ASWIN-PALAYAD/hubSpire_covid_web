@@ -4,7 +4,8 @@ import styled from 'styled-components';
 // styles starts here.....
 const Container = styled.div`
 position: absolute;
-    width: 1060px;
+    /* width: 1060px; */
+    width: 80%;
     height: 220px;
     background-color: white;
     border-radius: 33px;

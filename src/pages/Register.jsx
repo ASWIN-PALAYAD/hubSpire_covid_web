@@ -109,6 +109,8 @@ cursor: pointer;
 const Register = () => {
     
     const [myId, setMyId] = useState('')
+    const [IdName, setIdName] = useState('Adhar')
+    
 
     const {setIdNumber,setidVerified} =  useGlobalContext();
 
@@ -144,14 +146,14 @@ const Register = () => {
         </InfoHead>
 
         <ButtonArea>
-            <Button>Adhar Id</Button>
-            <Button>Student Id</Button>
-            <Button>Passport</Button>
-            <Button>Birth Certificate</Button>
+            <Button onClick={()=> setIdName('Adhar')} >Adhar Id</Button>
+            <Button onClick={()=> setIdName('Student Id')} >Student Id</Button>
+            <Button onClick={()=> setIdName('Passport')} >Passport</Button>
+            <Button onClick={()=> setIdName('Birth Certificate')} >Birth Certificate</Button>
         </ButtonArea>
 
         <FormArea>
-          <Label>Enter your Adhar no</Label> 
+          <Label>{`Enter Your ${IdName} no`}</Label> 
           <Input onChange={handleChange} type='text' placeholder='Enter the identity card number' />
           <NextButton onClick={()=> handleIdVerifiction()} >Next</NextButton>
         </FormArea>

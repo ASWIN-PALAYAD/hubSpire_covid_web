@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import ProcessStatusBar from '../components/ProcessStatusBar';
 import SectionHeading from '../components/SectionHeading';
+import { useGlobalContext } from '../context/GlobalContext';
 
 //styles start here...
 const Container = styled.div`
@@ -126,6 +127,16 @@ cursor: pointer;
 
 
 const RegistrationProcess2 = () => {
+
+
+    const {centerSelected} = useGlobalContext();
+    console.log(centerSelected);
+
+    useEffect(()=> {
+
+    },[])
+    
+
   return (
     <Container>
         <Heading>
@@ -142,10 +153,17 @@ const RegistrationProcess2 = () => {
                 </InfoHead>
                 <InfoBody>
                     <Left>
-                        <HospitalName>Mariyan Hospital</HospitalName>
-                        <Location>Pala,Kottayam,kerala</Location>
-                        <Vaccine>Covishield</Vaccine>
-                        <hr />
+
+                        {centerSelected?  (
+                            <>
+                            <HospitalName>{centerSelected.name}</HospitalName>
+                            <Location>{centerSelected.address}</Location>
+                            <Vaccine>Covishield</Vaccine>
+                            <hr />
+                            </>
+                        ) : ''}
+
+                        
                         
                         <PatientDetails>
                             <Name>Arjun p</Name>
