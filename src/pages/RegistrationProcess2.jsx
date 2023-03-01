@@ -129,12 +129,21 @@ cursor: pointer;
 const RegistrationProcess2 = () => {
 
 
-    const {centerSelected} = useGlobalContext();
+    const {centerSelected,setIdNumber,setidVerified,setHospitalSelected,setCenterSelected} = useGlobalContext();
     console.log(centerSelected);
 
     useEffect(()=> {
 
     },[])
+
+    const handleConfirm = () => {
+        alert('Your Appointment is confirmed');
+        setIdNumber('');
+        setidVerified(false);
+        setHospitalSelected(false);
+        setCenterSelected('');
+
+    }
     
 
   return (
@@ -184,9 +193,9 @@ const RegistrationProcess2 = () => {
                     </Right>
                 </InfoBody>
 
-                <NextButton>
+                <NextButton onClick={()=>handleConfirm()} >
                             Confirm Appointment
-                        </NextButton>
+                </NextButton>
             </InfoArea>
 
     </Container>

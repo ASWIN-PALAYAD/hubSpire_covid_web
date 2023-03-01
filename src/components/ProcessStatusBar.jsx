@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useGlobalContext } from '../context/GlobalContext';
+import DoneIcon from '@mui/icons-material/Done';
 
 // styles starts here.....
 const Container = styled.div`
@@ -27,6 +29,9 @@ const Circle = styled.div`
     border-radius: 50%;
     border: 1px solid #6B6B6B;
     margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 `
 const ProName = styled.div`
@@ -41,20 +46,29 @@ const ProName = styled.div`
 
 
 const ProcessStatusBar = () => {
+
+    const {idVerified,hospitalSelected} = useGlobalContext()
+
     return (
         <Container>
             <Process>
-                <Circle />
+                <Circle style={{backgroundColor:' #009FF9'}} >
+                  <DoneIcon style={{color:'white'}}/>
+                </Circle>
                 <ProName>Identification</ProName>
             </Process>
 
             <Process>
-                <Circle />
+                <Circle style={{backgroundColor : idVerified ? ' #009FF9' : ' ' }} >
+                <DoneIcon style={{color:'white'}}/>
+                </Circle>
                 <ProName>Vaccine Center</ProName>
             </Process>
 
             <Process>
-                <Circle />
+                <Circle style={{backgroundColor : hospitalSelected ? ' #009FF9' : ' ' }} >
+                <DoneIcon style={{color:'white'}}/>
+                </Circle>
                 <ProName>Appointment</ProName>
             </Process>
         </Container>

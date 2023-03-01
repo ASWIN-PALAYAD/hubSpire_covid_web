@@ -108,7 +108,7 @@ const Table = styled.table`
     width: 100%;
     
 `
-const TableTitle = styled.tr`
+const TableTitle = styled.thead`
     display: grid;
     grid-template-columns: 1fr 4fr 2fr  2fr  3fr ;
     background: #DCDCDC;
@@ -133,7 +133,7 @@ const TableHead = styled.th`
     line-height: 22px;
     color: #6B6B6B;
 `
-const TableDatas = styled.div`
+const TableDatas = styled.tbody`
 margin-top: 20px;
 background: white;
 border-radius: 24px;
@@ -169,7 +169,7 @@ const RegistrationProcess1 = () => {
     
 
 
-    const { setHospitalSelected,centerSelected,setCenterSelected} = useGlobalContext();
+    const { setHospitalSelected,hospitalSelected,centerSelected,setCenterSelected} = useGlobalContext();
 
     const [states, setStates] = useState([]);
     const [pinNumber, setPinNumber] = useState('')
@@ -180,7 +180,19 @@ const RegistrationProcess1 = () => {
 
 
     const handleHopitalDetails = () => {
-        setHospitalSelected(true)
+
+        if(centerSelected === ''){
+            alert('Please select a hospital')
+        }else{
+            setHospitalSelected(true)
+        }
+        
+
+        // if(centerSelected.length === 0){
+        //     setHospitalSelected(true)
+        // }else{
+        //     alert('Please selecte a center');
+        // }
     }
 
     const fetchStates = async () => {
@@ -236,8 +248,7 @@ const RegistrationProcess1 = () => {
     const handlePin = async() => {
         const {data} = await axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=${pinNumber}&date=${date}`)
         setCenters(data.sessions)
-        console.log(data.sessions);
-        
+        console.log(data.sessions);  
     }
 
 
@@ -309,29 +320,30 @@ const RegistrationProcess1 = () => {
                             <TableHead>Action</TableHead>
                         </TableTitle>
 
-                        {centers.length !== 0 ? (
+                        {centers?.length !== 0 ? (
                              <TableDatas>   
                              {centers?.map((center,index) => (
  
-                                 <TableRows key={center.center_id} color = {centerSelected?.center_id === center.center_id  ? '#009FF9' : '#6B6B6B'} >
+                                 <TableRows key={center?.center_id} color = {centerSelected?.center_id === center?.center_id  ? '#009FF9' : '#6B6B6B'} >
                                      <TableData>{index+1}</TableData>
-                                     <TableData>{center.name}</TableData>
-                                     <TableData>{center?.sessions[1]?.available_capacity || 0}</TableData>
+                                     <TableData>{center?.name}</TableData>
+                                     <TableData>{center?.sessions[0]?.available_capacity || 0}</TableData>
                                      <TableData>{center?.sessions[0]?.available_capacity || 0}</TableData>
                                      <TableData style={{cursor:'pointer'}} onClick={()=>handleSelectCenter(center)} >{centerSelected?.center_id === center.center_id  ? 'Selected' : 'Select'}</TableData>
                                  </TableRows>
  
                              ))}
                          </TableDatas>
+                         
                         ) : (
 
-                            <h2 style={{color:'red', marginTop:'5px'}} >NO Center available</h2>
+                            <tr style={{color:'red', marginTop:'5px'}} >NO Center available</tr>
                         )}
                        
-
-
-
                     </Table>
+
+
+                    
                     <NextButton onClick={() => handleHopitalDetails()} >
                         Next
                     </NextButton>
