@@ -323,12 +323,13 @@ const RegistrationProcess1 = () => {
                         {centers?.length !== 0 ? (
                              <TableDatas>   
                              {centers?.map((center,index) => (
+                                
  
                                  <TableRows key={center?.center_id} color = {centerSelected?.center_id === center?.center_id  ? '#009FF9' : '#6B6B6B'} >
                                      <TableData>{index+1}</TableData>
                                      <TableData>{center?.name}</TableData>
                                      <TableData>{center?.sessions[0]?.available_capacity || 0}</TableData>
-                                     <TableData>{center?.sessions[0]?.available_capacity || 0}</TableData>
+                                     <TableData>{center?.sessions[1]?.available_capacity || 0}</TableData>
                                      <TableData style={{cursor:'pointer'}} onClick={()=>handleSelectCenter(center)} >{centerSelected?.center_id === center.center_id  ? 'Selected' : 'Select'}</TableData>
                                  </TableRows>
  
